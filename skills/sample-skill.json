@@ -1,0 +1,12 @@
+{
+  "id": "website-builder",
+  "name": "Website Builder",
+  "description": "Skill to scaffold a simple static website from a spec (trusted skill).",
+  "entry": "skills/website-builder.js",
+  "capabilities": [
+    "generate_code",
+    "create_files",
+    "archive"
+  ],
+  "trusted": true
+}
