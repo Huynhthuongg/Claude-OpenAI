@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ai_memory
+      POSTGRES_USER: ai
+      POSTGRES_PASSWORD: ai_password
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+volumes:
+  db-data:
