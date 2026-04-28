@@ -196,6 +196,12 @@
     <!-- Vercel Speed Insights -->
     <script defer src="/_vercel/speed-insights/script.js"></script>
 
+    <!-- Vercel Web Analytics -->
+    <script type="module">
+        import { inject } from 'https://cdn.jsdelivr.net/npm/@vercel/analytics@2/+esm';
+        inject();
+    </script>
+
     <script>
         const chatContainer = document.getElementById('chat');
         const input = document.getElementById('input');
