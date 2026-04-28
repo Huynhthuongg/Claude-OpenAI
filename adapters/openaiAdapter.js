@@ -1,10 +1,17 @@
 // Minimal OpenAI adapter. Install: npm i openai
-const { Configuration, OpenAIApi } = require('openai');
+let client = null;
 const key = process.env.OPENAI_API_KEY || '';
-const cfg = new Configuration({ apiKey: key });
-const client = new OpenAIApi(cfg);
+
+try {
+  const { Configuration, OpenAIApi } = require('openai');
+  const cfg = new Configuration({ apiKey: key });
+  client = new OpenAIApi(cfg);
+} catch (err) {
+  console.log('OpenAI module not installed. Install with: npm i openai');
+}
 
 module.exports.generate = async (prompt, opts={}) => {
+  if(!client) return { text: `OpenAI module not installed. Prompt was: ${prompt}` };
   if(!key) return { text: `OpenAI API key not set. Prompt was: ${prompt}` };
   const resp = await client.createCompletion({
     model: opts.model || 'text-davinci-003',

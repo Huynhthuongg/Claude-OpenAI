@@ -12,6 +12,9 @@ const anthropicAdapter = require('./adapters/anthropicAdapter'); // optional
 const app = express();
 app.use(bodyParser.json());
 
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Simple in-memory skill registry (persist in DB for prod)
 const skillsDir = path.join(__dirname, 'skills');
 if (!fs.existsSync(skillsDir)) fs.mkdirSync(skillsDir);
